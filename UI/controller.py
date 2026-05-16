@@ -36,7 +36,8 @@ class Controller:
         numNodes, numEdges = self._model.getGraphDetails()
 
         allNodes = self._model.getAllNodes()
-        self.fillDropdown(allNodes)
+
+        self.fillDropdown(allNodes) # Da aggiunger eper forza dopo la creazione del grafo poiche prendiamo questi nodi
 
         self._view._txtResults.controls.clear()
         self._view._txtResults.controls.append(ft.Text("Grafo correttamente creato", color="green"))
@@ -56,9 +57,9 @@ class Controller:
         for n in allNodes:
             self._view._ddAeroportoP.options.append(
                 ft.dropdown.Option(
-                    data = n,
-                    key = n.IATA_CODE,
-                    on_click = self._choiceDdPartenza
+                    data = n, # Oggetto
+                    key = n.IATA_CODE, # Stringa che verrà visualizzata
+                    on_click = self._choiceDdPartenza # Dove viene salvato
                 )
             )
 

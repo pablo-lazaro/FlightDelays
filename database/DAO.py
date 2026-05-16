@@ -11,9 +11,11 @@ class DAO():
 
         result = []
 
+        # Il numero di voli per i nodi lo prendo da flights
+
         cursor = conn.cursor(dictionary=True)
         query = """select t.ID, t.iata_code, count(*) as N
-                    from (select a.ID , a.IATA_CODE , f.AIRLINE_ID
+                    from (select a.ID , a.IATA_CODE , f.AIRLINE_ID, count(*) as N
                     from airports a , flights f 
                     where a.ID = f.ORIGIN_AIRPORT_ID 
                     or a.ID  = f.DESTINATION_AIRPORT_ID
